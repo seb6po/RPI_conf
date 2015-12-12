@@ -1,0 +1,17 @@
+#!/bin/sh
+retour=0
+for port in 2 3; do
+  if [ -L /sys/class/gpio/gpio$port ];
+    then echo "gpio$port déjà créé"
+    retour=1 
+  else echo "création gpio$port";
+    echo "$port" > /sys/class/gpio/export
+    sleep 2
+    echo "out" > /sys/class/gpio/gpio$port/direction
+    echo "1" > /sys/class/gpio/gpio$port/value
+    chgrp gpio /sys/class/gpio/gpio$port/value
+    chmod g+w /sys/class/gpio/gpio$port/value
+    retour=0
+  fi
+done
+exit $retour
