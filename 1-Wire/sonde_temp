@@ -1,0 +1,35 @@
+#!/bin/sh
+if [ $# -gt 0 ] && [ $1 = "new" ] && [ -f ./stats_temp ];
+  then `rm ./stats_temp` 
+fi
+a=`cat /sys/bus/w1/devices/28-0115155efeff/w1_slave | grep t | awk -F "=" '{print $2/1000}'`
+b=$a
+c=$b
+d=$c
+e=$d
+f=$e
+g=$f
+h=$g
+i=$h
+j=$i
+while [ 1 ]; do
+  a=$b
+  b=$c
+  c=$d
+  d=$e
+  e=$f
+  f=$g
+  g=$h
+  h=$i 
+  i=$j 
+  j=`cat /sys/bus/w1/devices/28-0115155efeff/w1_slave | grep t | awk -F "=" '{print $2/1000}'`
+  moy=$(echo "$a + $b + $c + $d + $e + $f + $g + $h +$i +$j" | bc -l) 
+  moy=$(echo "scale=3;$moy / 10" | bc -l)
+  date=`date`
+  if [ $# -gt 0 ] && [ $1 = "-v" ] || [ $# -gt 1 ] && [ $2 = "-v" ];
+    then echo "$date temp : $j - moy : $moy"
+  else
+  echo "$date temp : $j - moy : $moy" >> ./stats_temp
+  fi
+  sleep 5 
+done
