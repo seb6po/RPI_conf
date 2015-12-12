@@ -1,3 +1,0 @@
-#!/bin/sh
-echo "2" > /sys/class/gpio/unexport
-echo "3" > /sys/class/gpio/unexport
