@@ -1,0 +1,12 @@
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+fast_reauth=1
+ap_scan=1
+network={
+        scan_ssid=1 # si ssid caché
+        ssid="mon_ssid" 
+        psk=passphrase
+        proto=RSN
+        key_mgmt=WPA-PSK
+        pairwise=TKIP
+}
