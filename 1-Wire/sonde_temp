@@ -2,7 +2,7 @@
 if [ $# -gt 0 ] && [ $1 = "new" ] && [ -f ./stats_temp ];
   then `rm ./stats_temp` 
 fi
-a=`cat /sys/bus/w1/devices/xxxxxxxx/w1_slave | grep t | awk -F "=" '{print $2/1000}'`
+a=`cat /sys/bus/w1/devices/28-0115155efeff/w1_slave | grep t | awk -F "=" '{print $2/1000}'`
 b=$a
 c=$b
 d=$c
@@ -22,7 +22,7 @@ while [ 1 ]; do
   g=$h
   h=$i 
   i=$j 
-  j=`cat /sys/bus/w1/devices/xxxxxxxx/w1_slave | grep t | awk -F "=" '{print $2/1000}'`
+  j=`cat /sys/bus/w1/devices/28-0115155efeff/w1_slave | grep t | awk -F "=" '{print $2/1000}'`
   moy=$(echo "$a + $b + $c + $d + $e + $f + $g + $h +$i +$j" | bc -l) 
   moy=$(echo "scale=3;$moy / 10" | bc -l)
   date=`date`
