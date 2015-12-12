@@ -1,0 +1,21 @@
+source-directory /etc/network/interfaces.d
+
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+iface eth0 inet static 
+  address x.x.x.x
+  netmask x.x.x.x
+  gateway x.x.x.x
+
+auto wlan0
+allow-hotplug wlan0
+#soit adresse manuelle ou statique
+#iface wlan0 inet manual
+  #wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+  iface wlan0 inet static
+  address x.x.x.x
+  netmask x.x.x.x
+  gateway x.x.x.x
+  wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
